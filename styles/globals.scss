@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Brand';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/fonts/DMSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Brand';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../public/fonts/DMSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Brand';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../public/fonts/DMSans-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Brand';
+  font-style: light;
+  font-weight: 200;
+  src: url('../public/fonts/DMSans-Medium.ttf');
+}
+
+html,
+body {
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-family: Brand, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1;
+}
+
+.btn {
+  @apply normal-case;
+}
+
+.btn-secondary {
+  @apply border border-white;
+}
+
+.label-text {
+  @apply text-sm;
+}
+
+.label-text-alt {
+  @apply text-sm;
+}
+
+.input {
+  @apply text-sm;
+}
+
+.btn {
+  @apply text-sm;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}

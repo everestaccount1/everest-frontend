@@ -1,0 +1,188 @@
+import { BigNumber, BigNumberish, ethers } from "ethers";
+import { FC, useEffect, useState } from "react";
+import { Chain, useAccount, useContractRead, useNetwork } from "wagmi";
+import { validChains } from "../../constants";
+import { StakingListItem } from "../../types";
+import Deposit from "./Deposit";
+import UserInfo from "./UserInfo";
+import Withdraw from "./Withdrawl";
+
+interface EnhanceProps {
+  stakingListItem: StakingListItem,
+  activePoolIndex: number,
+}
+
+export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) => {
+  const tabs = ['Deposit', 'Withdraw'];
+  const [activeTab, setActiveTab] = useState<number>(0);
+
+  const { address, isConnected } = useAccount();
+  const { chain: connectedChain } = useNetwork();
+  const [chain, setChain] = useState<Chain>(validChains[0]);
+
+  const [tokenBalance, setTokenBalance] = useState('0');
+  const [stakedBalance, setStakedBalance] = useState('0');
+  const [totalStaked, setTotalStaked] = useState('0');
+  const [userRewards, setUserRewards] = useState('0');
+  const [leaveEarlyFee, setLeaveEarlyFee] = useState('0');
+
+  useEffect(() => {
+    if (isConnected && connectedChain) {
+      setChain(connectedChain);
+    } else {
+      setChain(validChains[0]);
+    }
+  }, [isConnected, connectedChain]);
+
+  const { refetch: refetchTotalStaked } = useContractRead({
+    address: stakingListItem.pool[chain?.id]?.address,
+    abi: stakingListItem.pool.abi,
+    functionName: 'totalSupply',
+    onSuccess (data: BigNumberish) {
+      setTotalStaked(ethers.utils.formatUnits(data, 18));
+    },
+    onError (e) {
+      if (e) {
+        setTotalStaked('0');
+      }
+    }
+  });
+
+  const { refetch: refetchTotalRewards } = useContractRead({
+    address: stakingListItem.pool[chain?.id]?.address,
+    abi: stakingListItem.pool.abi,
+    functionName: stakingListItem.pendingRewardsFunction,
+    args: [address],
+    onSuccess (data: BigNumberish) {
+      console.log('total rewards for ' + stakingListItem[chain?.id]?.address + ' ' + data.toString())
+      setUserRewards(ethers.utils.formatUnits(data, 18));
+    },
+    onError (e: any) {
+      if (e) {
+        setUserRewards('0');
+      }
+    }
+  });
+
+
+  const { refetch: refetchTokenBalance } = useContractRead({
+    address: stakingListItem.token[chain?.id]?.address,
+    abi: stakingListItem.token.abi,
+    functionName: 'balanceOf',
+    args: [address],
+    onSuccess (data: BigNumberish) {
+      setTokenBalance(ethers.utils.formatUnits(data, 18));
+    },
+    onError (e) {
+      if (e) {
+        setTokenBalance('0');
+      }
+    }
+  });
+
+  const { refetch: refetchStakedBalance } = useContractRead({
+    address: stakingListItem.pool[chain?.id]?.address,
+    abi: stakingListItem.pool.abi,
+    functionName: 'balanceOf',
+    args: [address],
+    onSuccess (data: BigNumberish) {
+      setStakedBalance(ethers.utils.formatUnits(data, 18));
+    },
+    onError (e) {
+      if (e) {
+        setStakedBalance('0');
+      }
+    },
+  });
+
+  const { refetch: refetchLeaveEarlyFee } = useContractRead({
+    address: stakingListItem.pool[chain?.id]?.address,
+    abi: stakingListItem.pool.abi,
+    functionName: 'leaveEarlyFee',
+    onSuccess (data: BigNumberish) {
+      console.log('leaveEarlyFee', BigNumber.from(data).div(10).toString() + '%');
+      setLeaveEarlyFee(BigNumber.from(data).div(10).toString());
+    },
+    onError (e) {
+      if (e) {
+        setLeaveEarlyFee('0');
+      }
+    }
+  });
+
+  const refetchBalances = () => {
+    refetchTokenBalance();
+    refetchStakedBalance();
+    refetchTotalRewards();
+    refetchTotalStaked();
+    refetchLeaveEarlyFee();
+  }
+
+  useEffect(() => {
+    console.log('refetching balances', stakingListItem.name)
+    refetchBalances();
+  }, [activePoolIndex])
+
+  const getTokensPerDay = () => {
+    if (activePoolIndex === 0) {
+      return 235;
+    } else if (activePoolIndex === 1) {
+      return 290;
+    } else if (activePoolIndex === 2) {
+      return 200;
+    } else if (activePoolIndex === 3) {
+      return 250;
+    } else {
+      return 1200;
+    }
+  }
+
+  const getAPY = () => {
+    return (36500 * getTokensPerDay() / parseFloat(totalStaked)).toFixed(2);
+  }
+  
+  return (
+    <div className="flex flex-col justify-center w-full bg-black bg-opacity-30 backdrop-blur-lg border border-brand-light-gray rounded-2.5xl p-8">
+      <div className="mx-auto mb-4">
+        <div className="tabs tabs-boxed">
+          {tabs.map((tab: string, i: number) => (
+            <a 
+              className={`tab ${activeTab === i ? 'tab-active' : ''}`}
+              onClick={() => setActiveTab(i)}
+            >
+              {tab}
+            </a>
+          ))}
+        </div>
+      </div>
+      <UserInfo
+        stakedBalance={stakedBalance}
+        totalStaked={totalStaked} 
+        tokenBalance={tokenBalance} 
+        profit={userRewards}
+        apy={getAPY()}
+        leaveEarlyFee={leaveEarlyFee}
+      />
+      <div>
+        {activeTab === 0 && (              
+          <Deposit 
+            tokenBalance={tokenBalance}
+            chain={chain}
+            callback={refetchBalances}
+            stakingListItem={stakingListItem}
+          />
+        )}
+        {activeTab === 1 && (
+          <Withdraw
+            stakedBalance={stakedBalance}
+            chain={chain}
+            callback={refetchBalances}
+            stakingListItem={stakingListItem}          
+          />
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Enhance;
