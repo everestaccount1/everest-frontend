@@ -390,7 +390,7 @@ type NavItem = {
 export const NAV_ITEMS: Array<NavItem> = [
   {
     name: 'Home',
-    link: 'https://truthseekerskyc.com/'
+    link: 'https://aviate.finance/'
   },
   // {
   //   name: 'DEX',
