@@ -13,7 +13,7 @@ import Notification from './Notification';
 import telegram from '../../public/img/social/telegram.svg';
 import twitter from '../../public/img/social/twitter.svg';
 import discord from '../../public/img/social/discord.svg';
-import logo from '../../public/img/logo-horizontal.svg';
+import logo from '../../public/img/Aviate_logo.png';
 import { Menu } from 'react-feather';
 import Connect from './Connect';
 import { NAV_ITEMS } from '../../constants';
@@ -69,7 +69,7 @@ export default function Layout({children}) {
                   <label htmlFor="nav-drawer" className="btn btn-primary drawer-button mr-4">
                     <Menu />
                   </label>
-                  <Image src={logo} alt="logo" height={63} width={126} />
+                  <Image src={logo} alt="logo" height={57} width={147} /> {/* 85 x 220 - scaled down 2/3 */}
                 </div>
                 <Connect hideIcon={true} />
               </div>
@@ -85,7 +85,7 @@ export default function Layout({children}) {
               <div>
                 <footer className="sm:py-8 py-2 mx-auto bg-black w-screen">
                   <div className="flex justify-center w-full mb-4">
-                    <Image src={logo} alt="logo" height={63} width={126} />
+                    <Image src={logo} alt="logo" height={57} width={147} />
                   </div>
                   <div className="flex justify-center w-full">
                     {socialLinks.map((social, index) => (
@@ -104,7 +104,7 @@ export default function Layout({children}) {
               <label htmlFor="nav-drawer" className="drawer-overlay"></label>
               <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                 <li className="py-5">
-                  <Image src={logo} alt="logo" height={63} width={126} />
+                  <Image src={logo} alt="logo" height={57} width={147} />
                 </li>
                 {NAV_ITEMS.map(nav => (
                   <li key={nav.name}>
