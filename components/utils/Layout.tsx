@@ -13,7 +13,7 @@ import Notification from './Notification';
 import telegram from '../../public/img/social/telegram.svg';
 import twitter from '../../public/img/social/twitter.svg';
 import discord from '../../public/img/social/discord.svg';
-import logo from '../../public/img/Aviate_logo.png';
+import logo from '../../public/img/aviate_logo.png';
 import { Menu } from 'react-feather';
 import Connect from './Connect';
 import { NAV_ITEMS } from '../../constants';
@@ -42,14 +42,16 @@ export default function Layout({children}) {
   return (
     <>
       <NextHead>
-        <title>Truthseekers - Staking</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
-        <link rel="manifest" href="favicon/site.webmanifest" />
-        <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c"></meta>
-        <meta name="theme-color" content="#ffffff"></meta>
+        <div>
+          <title>Truthseekers - Staking</title>
+          <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+          <link rel="manifest" href="favicon/site.webmanifest" />
+          <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#da532c"></meta>
+          <meta name="theme-color" content="#ffffff"></meta>
+        </div>
       </NextHead>
       <NotificationContext.Provider value={notificationState}>
         <div className="w-screen h-screen absolute overflow-y-hidden">
@@ -95,7 +97,7 @@ export default function Layout({children}) {
                     ))}
                   </div>
                   <div className="flex justify-center w-full text-xs mt-4 font-light">
-                    Truthseekers Copyright 2022. All rights reserved.
+                    Aviate Copyright 2023. All rights reserved.
                   </div>
                 </footer>
               </div>

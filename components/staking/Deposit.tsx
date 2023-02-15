@@ -152,9 +152,9 @@ const Deposit: FC<DepositProps> = ({
             <div className="absolute inset-y-0 ml-3 flex items-center">
               <Image
                 src={poolImg}
-                height={20}
-                width={33}
-                alt="TRUTH BNB LP"
+                height={26}
+                width={26}
+                alt="AVIATE lp"
               />
             </div>
             <input 

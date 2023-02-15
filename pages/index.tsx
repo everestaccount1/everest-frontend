@@ -12,7 +12,7 @@ export const Home: NextPage = () => {
       <main>
         <div className="max-w-5xl mx-auto mb-4">
           <div className="text-5xl text-accent text-center font-bold leading-4xl">Staking</div>
-          <div className="text-center">Stake TRUTH to earn rewards</div>
+          <div className="text-center">Stake AVIATE to earn rewards</div>
         </div>
         <div className="max-w-xl mx-auto flex flex-col gap-4">
           <div className="btn-group mx-auto flex flex-nowrap overflow-x-auto">

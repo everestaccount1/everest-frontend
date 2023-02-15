@@ -1,7 +1,7 @@
 import { FC, useState, useContext, useEffect, useMemo } from 'react';
 import { Contract } from '../../types';
 import Image from 'next/image';
-import daylogo from '../../public/img/dayl.svg';
+import daylogo from '../../public/img/aviate_icon.png';
 import { useContractRead, useAccount, erc20ABI, Chain } from 'wagmi';
 import { ethers, BigNumberish } from 'ethers';
 import AddLiquidityContext from '../../context/AddLiquidityContext';
@@ -126,9 +126,9 @@ export const AddLiquidityField: FC<AddLiquidityFieldProps> = ({ token, tokenBala
             {imgUrl && (
               <Image
                 src={imgUrl}
-                height={20}
-                width={20}
-                alt="TRUTH BNB LP"
+                height={26}
+                width={26}
+                alt="AVIATE lp"
               />
             )}
           </div>

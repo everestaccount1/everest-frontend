@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../public/img/logo-horizontal.svg';
+import logo from '../../public/img/aviate_logo.png';
 import Connect from './Connect';
 import { NAV_ITEMS } from '../../constants';
 
@@ -9,7 +9,7 @@ export default function MenuTop() {
     <div className="navbar max-w-6xl backdrop-blur-lg mx-auto mt-2 mb-4 z-10">
       <div className="sm:mr-20 md:mr-14 lg:mr-10 mr-4 z-10">
         <Link href="/">
-          <Image src={logo} alt="logo" height={63} width={126} />
+          <Image src={logo} alt="logo" height={57} width={147} />
         </Link>
       </div>
       <div className="flex-1 text-lg z-10">

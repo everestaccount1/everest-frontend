@@ -5,7 +5,7 @@ import factoryJson from './abis/Factory.json';
 import lpProviderJson from './abis/LPProvider.json';
 import { Chain, erc20ABI } from 'wagmi';
 import { Contract, StakingListItem } from '../types';
-import daylImg from '../public/img/dayl.svg';
+import daylImg from '../public/img/aviate_icon.png';
 import stakingJson from './abis/Staking.json';
 
 // use eth by default in prod and localhost by default in dev
