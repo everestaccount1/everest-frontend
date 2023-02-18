@@ -2,6 +2,7 @@ import NextHead from 'next/head';
 import Image from 'next/image';
 import helix from '../../public/img/bg.svg';
 import sphere from '../../public/img/bg2.svg';
+import themeBG from '../../public/img/test-bg.svg';
 // components
 import MenuTop from './MenuTop';
 // context
@@ -13,29 +14,40 @@ import Notification from './Notification';
 import telegram from '../../public/img/social/telegram.svg';
 import twitter from '../../public/img/social/twitter.svg';
 import discord from '../../public/img/social/discord.svg';
+import youtube from '../../public/img/social/youtube.svg';
 import logo from '../../public/img/aviate_logo.png';
 import { Menu } from 'react-feather';
 import Connect from './Connect';
 import { NAV_ITEMS } from '../../constants';
 
 export default function Layout({children}) {
+  const year = new Date().getFullYear();
+
   const notification = useNotification();
   const notificationState = {
     ...notification
   }
 
   const socialLinks = [
-    {
+    /* {
       link: 'https://t.me/truthsecurity',
       image: telegram
-    },
+    }, */
     {
-      link: 'https://twitter.com/TruthSeekersKYC',
+      link: 'https://twitter.com/AviateProtocol',
       image: twitter
     },
     {
-      link: 'https://discord.gg/PNb9ubvJD5',
+      link: 'https://discord.gg/a9K84U6tFn',
       image: discord
+    },
+    /* {
+      link: 'https://discord.gg/a9K84U6tFn',
+      image: discord
+    }, */
+    {
+      link: 'https://www.youtube.com/channel/UCgwGqi7S1Gwmu0gy046lxFA',
+      image: youtube
     }
   ]
 
@@ -43,7 +55,7 @@ export default function Layout({children}) {
     <>
       <NextHead>
         <div>
-          <title>Truthseekers - Staking</title>
+          <title>Aviate - Staking</title>
           <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
@@ -55,12 +67,12 @@ export default function Layout({children}) {
       </NextHead>
       <NotificationContext.Provider value={notificationState}>
         <div className="w-screen h-screen absolute overflow-y-hidden">
-          <div className="absolute -right-96 -bottom-96">
+          {/* <div className="absolute -right-96 -bottom-96">
             <Image src={helix} height={1282} width={1282} />
           </div>
           <div className="absolute -left-96 -top-96">
             <Image src={sphere} height={1024} width={1024} />
-          </div>
+          </div> */}
         </div>
         <div className="h-full min-h-screen bg-brand-backdrop flex flex-col max-w-screen text-base">
           <div className="drawer">
@@ -80,7 +92,7 @@ export default function Layout({children}) {
               </div>
               <div className="h-full min-h-screen grow flex flex-col">
                 <Notification />
-                <div className="px-4">
+                <div className="px-4" key={children} >
                   {children}
                 </div>
               </div>
@@ -97,7 +109,7 @@ export default function Layout({children}) {
                     ))}
                   </div>
                   <div className="flex justify-center w-full text-xs mt-4 font-light">
-                    Aviate Copyright 2023. All rights reserved.
+                    © {year} AviateCo, All Rights Reserved
                   </div>
                 </footer>
               </div>

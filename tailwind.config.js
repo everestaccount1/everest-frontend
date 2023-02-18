@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "brand-bg": "url('/img/bg.svg')",
-        'brand-backdrop': 'radial-gradient(at -20% 10%, rgba(109, 252, 166, 0.38) 0, transparent 20%), radial-gradient(at 250% 100%, rgba(96, 133, 228, 0.28) 0, transparent 64%)',
+        'brand-backdrop': 'radial-gradient(at -20% 10%, rgba(16, 57, 166, 0.45) 0, transparent 20%), radial-gradient(at 250% 100%, rgba(96, 133, 228, 0.28) 0, transparent 64%)',
         'brand-gradient': 'linear-gradient(90deg, #DA4A52 0%, #DF775A 100%)',
         'brand-gradient-tilted': 'linear-gradient(180deg, #DA4A52 0%,  #DF775A 100%)',
         'brand-gradient-dark': 'linear-gradient(90deg, rgba(252, 9, 23, 0.5) 0%, rgba(247, 75, 27, 0.5) 100%)',
@@ -19,6 +19,7 @@ module.exports = {
       },
       colors: {
         'text-base': '#ffffff',
+        'brand-bg': '#031652',
         'brand-transparent-gray': 'rgba(66, 66, 66, 0.2)',
         'brand-light-gray': 'rgba(224, 224, 255, 0.24)',
         'brand-dark-gray': '#353535',
@@ -32,9 +33,9 @@ module.exports = {
       {
         dark: {
           ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
-          primary: "#3F65F3",
+          primary: "#1B4686", /* original blue: 3F65F3 */
           secondary: "#15151A",
-          accent: "#6DFCA6",
+          accent: "#E837E8",
           success: "#6DFCA6",
           'base-content': "#CCCABE",
           'base-100': '#15151A',
