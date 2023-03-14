@@ -192,9 +192,7 @@ const Deposit: FC<DepositProps> = ({
           <div className="text-error text-opacity-50 text-xs">{formatError(wagmiError?.reason)}</div>
         )}
       </div>
-      <div className="justify-center text-center">
-        1% Fee On Stake And Unstake
-      </div>
+
     </div>
   )
 }

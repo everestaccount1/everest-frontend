@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { Chain, useAccount, useContractRead, useNetwork } from "wagmi";
 import { validChains } from "../../constants";
 import { StakingListItem } from "../../types";
+import Claim from "./Claim";
 import Deposit from "./Deposit";
 import UserInfo from "./UserInfo";
 import Withdraw from "./Withdrawl";
@@ -51,7 +52,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
   const { refetch: refetchTotalRewards } = useContractRead({
     address: stakingListItem.pool[chain?.id]?.address,
     abi: stakingListItem.pool.abi,
-    functionName: stakingListItem.pendingRewardsFunction,
+    functionName: 'totalRewards', //stakingListItem.pendingRewardsFunction,
     args: [address],
     onSuccess (data: BigNumberish) {
       console.log('total rewards for ' + stakingListItem[chain?.id]?.address + ' ' + data.toString())
@@ -63,7 +64,6 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
       }
     }
   });
-
 
   const { refetch: refetchTokenBalance } = useContractRead({
     address: stakingListItem.token[chain?.id]?.address,
@@ -124,17 +124,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
   }, [activePoolIndex])
 
   const getTokensPerDay = () => {
-    if (activePoolIndex === 0) {
-      return 235;
-    } else if (activePoolIndex === 1) {
-      return 290;
-    } else if (activePoolIndex === 2) {
-      return 200;
-    } else if (activePoolIndex === 3) {
-      return 250;
-    } else {
-      return 1200;
-    }
+    return 1000;
   }
 
   const getAPY = () => {
@@ -180,6 +170,13 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
             stakingListItem={stakingListItem}          
           />
         )}
+        <Claim 
+        chain={chain}
+        callback={refetchBalances}
+        address={stakingListItem.pool[chain?.id]?.address}
+        abi={stakingListItem.pool[chain?.id]?.abi}
+        showClaimBtn={true}
+        />
       </div>
     </div>
   )

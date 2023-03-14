@@ -5,7 +5,7 @@ import NotificationContext from '../../context/NotificationContext';
 import { ExternalLink } from 'react-feather';
 import { BigNumberish, ethers } from 'ethers';
 
-const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pendingRewardsFunction }) => {
+const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn }) => {
   const { address } = useAccount();
   const { popNotification } = useContext(NotificationContext);
   const [inProgress, setInProgress] = useState(false);
@@ -21,7 +21,7 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pe
   useContractRead({
     address: stakingAddress,
     abi: abi,
-    functionName: pendingRewardsFunction,
+    functionName: 'pendingRewards',
     args: [address],
     watch: true,
     onSuccess (data: BigNumberish) {
@@ -69,11 +69,11 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pe
     <div className="grid grid-row-2 gap-10">
       <div className={`row-span-2 flex items-start`}>
         <div className="flex items-center">
-        <span>Rewards:</span> 
+        <span>Pending Rewards:</span> 
         <span className="mx-2 text-3xl text-accent">
           {parseFloat(rewards?.toString()).toLocaleString([],{})}
         </span>
-        <span>TRUTH</span>
+        <span>USDC</span>
         </div>
       </div>
       {showClaimBtn && (

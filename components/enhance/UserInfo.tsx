@@ -19,6 +19,10 @@ const UserInfo: FC<UserInfoProps> = ({
   leaveEarlyFee,
 }) => {
 
+  if (apy == 'Infinity') {
+    apy = '0';
+  }
+
   return (
     <div className="grid grid-row-2 gap-2">
       <div className="flex justify-between">
@@ -52,10 +56,10 @@ const UserInfo: FC<UserInfoProps> = ({
         </div>
         <div>
           <div className="text-right">
-            Your Staking Profit
+            Total Rewards
           </div>
           <div className="text-right font-bold text-lg">
-            <CountUp end={Number(profit) || 0} decimals={0} separator="," />
+            <CountUp end={Number(profit) || 0} decimals={0} separator="," /> USDC
           </div>
         </div>
       </div>
@@ -73,7 +77,7 @@ const UserInfo: FC<UserInfoProps> = ({
             APY
           </div>
           <div className="text-right font-bold text-lg">
-            <CountUp end={Number(apy) || 0} decimals={0} separator="," suffix='%' />
+            <CountUp end={Number('1000') || 0} decimals={0} separator="," suffix='%' />
           </div>
         </div>
       </div>

@@ -12,9 +12,10 @@ export const LockTime: FC<LockTimeProps> = ({ stakingListItem, chain }) => {
   const { refetch } = useContractRead({
     address: stakingListItem.pool[chain?.id]?.address,
     abi: stakingListItem.pool.abi,
-    functionName: stakingListItem.lockTimeFunction,
+    functionName: stakingListItem.unlockTimeFunction,
     watch: true,
     onSuccess (data: number) {
+      console.log(data);
       setSecsToUnlock(data * 3); // multiply by 3s for blocktime
     },
     onError (error: any) {

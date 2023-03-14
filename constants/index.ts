@@ -149,199 +149,193 @@ export const STAKINGLIST: StakingListItem[] = [
   {
     pool: {
       56: {
-        address: '0xcf8a986a9a7a57A3Daa0085E83DD2B2af5d9B372'
-      },
-      1337: {
-        address: '0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE',
+        address: '0x7B789CF132b4F3Bd4C88F7D998b11Cc06B6705C8'
       },
       abi: stakingJson,
     },
     token: {
       56: {
-        address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
-      },
-      1337: {
-        address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+        address: '0x4A008AB4394f0Dc1Af064A1d7CC62F8B2380865F'
       },
       abi: erc20ABI,
-    },
-    name: '7 Days',
-    shortName: '7d',
-    apy: '0',
-    depositFunction: 'deposit',
-    unlockTimeFunction: 'remainingLockTime',
-    lockTimeFunction: 'leaveEarlyFeeTimer',
-    pendingRewardsFunction: 'getTotalProfits',
-    hasUnlockTime: true,
-    reward: 'TRUTH',
-    poolImg: daylImg,
-    showClaimBtn: false,
-    primaryBtn: {
-      text: 'Buy TRUTH',
-      href: "https://dapp.daylightprotocol.com/swap?inputCurrency=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-      linkIsInternal: false,
-    },
-  },
-  {
-    pool: {
-      56: {
-        address: '0x66AaeB0044A5a5084e1F5aB08B05e2f413415288'
-      },
-      1337: {
-        address: '0x68B1D87F95878fE05B998F19b66F4baba5De1aed',
-      },
-      abi: stakingJson,
-    },
-    token: {
-      56: {
-        address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
-      },
-      1337: {
-        address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
-      },
-      abi: erc20ABI
     },
     name: '30 Days',
     shortName: '30d',
     apy: '0',
-    reward: 'TRUTH',
-    pendingRewardsFunction: 'getTotalProfits',
     depositFunction: 'deposit',
-    unlockTimeFunction: 'remainingLockTime',
+    unlockTimeFunction: 'timeUntilUnlock',
+    lockTimeFunction: 'timeUntilUnlock',
+    pendingRewardsFunction: 'pendingRewards',
+    hasUnlockTime: true,
+    reward: 'USDC',
     poolImg: daylImg,
     showClaimBtn: true,
-    hasUnlockTime: true,
     primaryBtn: {
-      text: 'Add Liquidity',
-      href: "/add?tokenA=0x9d0233857A7F75089924fF27E7CC554adab350Bb&tokenB=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-      linkIsInternal: true,
-    },
-    secondaryBtn: {
-      text: 'Remove Liquidity',
-      href: "https://dapp.daylightprotocol.com/liquidity",
+      text: 'Buy AVIATE',
+      href: "https://pancakeswap.finance/swap?outputCurrency=0x4A008AB4394f0Dc1Af064A1d7CC62F8B2380865F",
       linkIsInternal: false,
-    }
+    },
   },
-  {
-    pool: {
-      56: {
-        address: '0x509865D9A76CdD310651bBcebcaE08C69F3357b9'
-      },
-      1337: {
-        address: '0x3Aa5ebB10DC797CAC828524e59A333d0A371443c',
-      },
-      abi: stakingJson,
-    },
-    token: {
-      56: {
-        address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
-      },
-      1337: {
-        address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
-      },
-      abi: erc20ABI,
-    },
-    name: '90 Days',
-    shortName: '90d',
-    apy: '0',
-    reward: 'TRUTH',
-    depositFunction: 'deposit',
-    unlockTimeFunction: 'remainingLockTime',
-    pendingRewardsFunction: 'getTotalProfits',
-    poolImg: daylImg,
-    showClaimBtn: true,
-    hasUnlockTime: true,
-    primaryBtn: {
-      text: 'Add Liquidity',
-      href: "/add?tokenA=0x9d0233857A7F75089924fF27E7CC554adab350Bb&tokenB=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-      linkIsInternal: true,
-    },
-    secondaryBtn: {
-      text: 'Remove Liquidity',
-      href: "https://dapp.daylightprotocol.com/liquidity",
-      linkIsInternal: false,
-    }
-  },
-  {
-    pool: {
-      56: {
-        address: '0x7058903eb501b62bE4A7ADD0B7Ab906Ec5E14EF8'
-      },
-      1337: {
-        address: '0xc6e7DF5E7b4f2A278906862b61205850344D4e7d',
-      },
-      abi: stakingJson,
-    },
-    token: {
-      56: {
-        address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
-      },
-      1337: {
-        address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
-      },
-      abi: erc20ABI,
-    },
-    name: '180 Days',
-    shortName: '180d',
-    apy: '0',
-    reward: 'TRUTH',
-    depositFunction: 'deposit',
-    unlockTimeFunction: 'remainingLockTime',
-    pendingRewardsFunction: 'getTotalProfits',
-    poolImg: daylImg,
-    showClaimBtn: true,
-    hasUnlockTime: true,
-    primaryBtn: {
-      text: 'Add Liquidity',
-      href: "https://dapp.daylightprotocol.com/add",
-      linkIsInternal: false,
-    },
-    secondaryBtn: {
-      text: 'Remove Liquidity',
-      href: "https://dapp.daylightprotocol.com/liquidity",
-      linkIsInternal: false,
-    }
-  },
-  {
-    pool: {
-      56: {
-        address: '0xC5359c9a55bC5AF6781a02677E61bECA0254e9A6'
-      },
-      1337: {
-        address: '0x59b670e9fA9D0A427751Af201D676719a970857b',
-      },
-      abi: stakingJson,
-    },
-    token: {
-      56: {
-        address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
-      },
-      1337: {
-        address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
-      },
-      abi: erc20ABI,
-    },
-    name: '365 Days',
-    shortName: '365d',
-    apy: '0',
-    reward: 'TRUTH',
-    depositFunction: 'deposit',
-    unlockTimeFunction: 'remainingLockTime',
-    pendingRewardsFunction: 'getTotalProfits',
-    poolImg: daylImg,
-    showClaimBtn: true,
-    hasUnlockTime: true,
-    primaryBtn: {
-      text: 'Add Liquidity',
-      href: "https://dapp.daylightprotocol.com/add",
-      linkIsInternal: false,
-    },
-    secondaryBtn: {
-      text: 'Remove Liquidity',
-      href: "https://dapp.daylightprotocol.com/liquidity",
-      linkIsInternal: false,
-    }
-  },
+  // {
+  //   pool: {
+  //     56: {
+  //       address: '0x66AaeB0044A5a5084e1F5aB08B05e2f413415288'
+  //     },
+  //     1337: {
+  //       address: '0x68B1D87F95878fE05B998F19b66F4baba5De1aed',
+  //     },
+  //     abi: stakingJson,
+  //   },
+  //   token: {
+  //     56: {
+  //       address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
+  //     },
+  //     1337: {
+  //       address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+  //     },
+  //     abi: erc20ABI
+  //   },
+  //   name: '30 Days',
+  //   shortName: '30d',
+  //   apy: '0',
+  //   reward: 'TRUTH',
+  //   pendingRewardsFunction: 'getTotalProfits',
+  //   depositFunction: 'deposit',
+  //   unlockTimeFunction: 'remainingLockTime',
+  //   poolImg: daylImg,
+  //   showClaimBtn: true,
+  //   hasUnlockTime: true,
+  //   primaryBtn: {
+  //     text: 'Add Liquidity',
+  //     href: "/add?tokenA=0x9d0233857A7F75089924fF27E7CC554adab350Bb&tokenB=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+  //     linkIsInternal: true,
+  //   },
+  //   secondaryBtn: {
+  //     text: 'Remove Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/liquidity",
+  //     linkIsInternal: false,
+  //   }
+  // },
+  // {
+  //   pool: {
+  //     56: {
+  //       address: '0x509865D9A76CdD310651bBcebcaE08C69F3357b9'
+  //     },
+  //     1337: {
+  //       address: '0x3Aa5ebB10DC797CAC828524e59A333d0A371443c',
+  //     },
+  //     abi: stakingJson,
+  //   },
+  //   token: {
+  //     56: {
+  //       address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
+  //     },
+  //     1337: {
+  //       address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+  //     },
+  //     abi: erc20ABI,
+  //   },
+  //   name: '90 Days',
+  //   shortName: '90d',
+  //   apy: '0',
+  //   reward: 'TRUTH',
+  //   depositFunction: 'deposit',
+  //   unlockTimeFunction: 'remainingLockTime',
+  //   pendingRewardsFunction: 'getTotalProfits',
+  //   poolImg: daylImg,
+  //   showClaimBtn: true,
+  //   hasUnlockTime: true,
+  //   primaryBtn: {
+  //     text: 'Add Liquidity',
+  //     href: "/add?tokenA=0x9d0233857A7F75089924fF27E7CC554adab350Bb&tokenB=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+  //     linkIsInternal: true,
+  //   },
+  //   secondaryBtn: {
+  //     text: 'Remove Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/liquidity",
+  //     linkIsInternal: false,
+  //   }
+  // },
+  // {
+  //   pool: {
+  //     56: {
+  //       address: '0x7058903eb501b62bE4A7ADD0B7Ab906Ec5E14EF8'
+  //     },
+  //     1337: {
+  //       address: '0xc6e7DF5E7b4f2A278906862b61205850344D4e7d',
+  //     },
+  //     abi: stakingJson,
+  //   },
+  //   token: {
+  //     56: {
+  //       address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
+  //     },
+  //     1337: {
+  //       address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+  //     },
+  //     abi: erc20ABI,
+  //   },
+  //   name: '180 Days',
+  //   shortName: '180d',
+  //   apy: '0',
+  //   reward: 'TRUTH',
+  //   depositFunction: 'deposit',
+  //   unlockTimeFunction: 'remainingLockTime',
+  //   pendingRewardsFunction: 'getTotalProfits',
+  //   poolImg: daylImg,
+  //   showClaimBtn: true,
+  //   hasUnlockTime: true,
+  //   primaryBtn: {
+  //     text: 'Add Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/add",
+  //     linkIsInternal: false,
+  //   },
+  //   secondaryBtn: {
+  //     text: 'Remove Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/liquidity",
+  //     linkIsInternal: false,
+  //   }
+  // },
+  // {
+  //   pool: {
+  //     56: {
+  //       address: '0xC5359c9a55bC5AF6781a02677E61bECA0254e9A6'
+  //     },
+  //     1337: {
+  //       address: '0x59b670e9fA9D0A427751Af201D676719a970857b',
+  //     },
+  //     abi: stakingJson,
+  //   },
+  //   token: {
+  //     56: {
+  //       address: '0x55a633B3FCe52144222e468a326105Aa617CC1cc'
+  //     },
+  //     1337: {
+  //       address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+  //     },
+  //     abi: erc20ABI,
+  //   },
+  //   name: '365 Days',
+  //   shortName: '365d',
+  //   apy: '0',
+  //   reward: 'TRUTH',
+  //   depositFunction: 'deposit',
+  //   unlockTimeFunction: 'remainingLockTime',
+  //   pendingRewardsFunction: 'getTotalProfits',
+  //   poolImg: daylImg,
+  //   showClaimBtn: true,
+  //   hasUnlockTime: true,
+  //   primaryBtn: {
+  //     text: 'Add Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/add",
+  //     linkIsInternal: false,
+  //   },
+  //   secondaryBtn: {
+  //     text: 'Remove Liquidity',
+  //     href: "https://dapp.daylightprotocol.com/liquidity",
+  //     linkIsInternal: false,
+  //   }
+  // },
 
 ]
 
