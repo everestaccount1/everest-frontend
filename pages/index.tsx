@@ -18,6 +18,7 @@ export const Home: NextPage = () => {
           <div className="btn-group mx-auto flex flex-nowrap overflow-x-auto">
             {STAKINGLIST.map((item: StakingListItem, index: number) => (
               <button 
+                key={index}
                 className={`btn ${index === activePoolIndex && 'btn-active'}`}
                 onClick={() => setActivePoolIndex(index)}
               >

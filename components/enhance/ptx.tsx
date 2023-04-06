@@ -137,6 +137,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
         <div className="tabs tabs-boxed">
           {tabs.map((tab: string, i: number) => (
             <a 
+              key={i}
               className={`tab ${activeTab === i ? 'tab-active' : ''}`}
               onClick={() => setActiveTab(i)}
             >
