@@ -3,12 +3,23 @@ import { STAKINGLIST } from '../constants';
 import { NextPage } from 'next';
 import { useState } from 'react';
 import { StakingListItem } from '../types';
+import Head from 'next/head';
 
 export const Home: NextPage = () => {
   const [activePoolIndex, setActivePoolIndex] = useState<number>(0);
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Aviate - Staking</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c"></meta>
+        <meta name="theme-color" content="#ffffff"></meta>
+      </Head>
       <main>
         <div className="max-w-5xl mx-auto mb-4">
           <div className="text-5xl text-accent text-center font-bold leading-4xl">Staking</div>
@@ -33,7 +44,7 @@ export const Home: NextPage = () => {
           />
         </div>
       </main>
-    </div>
+    </>
   )
 }
 
