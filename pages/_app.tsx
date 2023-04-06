@@ -26,8 +26,8 @@ import Layout from '../components/utils/Layout';
 import '../styles/globals.scss';
 
 // Wagmi setup
-const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-const infuraId = process.env.NEXT_PUBLIC_INFURA_ID
+// const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+// const infuraId = process.env.NEXT_PUBLIC_INFURA_ID
 
 const { provider, webSocketProvider } = configureChains(
   validChains,
