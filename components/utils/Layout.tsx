@@ -1,8 +1,4 @@
-import NextHead from 'next/head';
 import Image from 'next/image';
-import helix from '../../public/img/bg.svg';
-import sphere from '../../public/img/bg2.svg';
-import themeBG from '../../public/img/test-bg.svg';
 // components
 import MenuTop from './MenuTop';
 // context
@@ -11,7 +7,6 @@ import NotificationContext from '../../context/NotificationContext';
 import useNotification from '../../hooks/useNotification';
 import Notification from './Notification';
 // images
-import telegram from '../../public/img/social/telegram.svg';
 import twitter from '../../public/img/social/twitter.svg';
 import discord from '../../public/img/social/discord.svg';
 import youtube from '../../public/img/social/youtube.svg';
@@ -53,18 +48,6 @@ export default function Layout({children}) {
 
   return (
     <>
-      <NextHead>
-        <div>
-          <title>Aviate - Staking</title>
-          <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
-          <link rel="manifest" href="favicon/site.webmanifest" />
-          <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5" />
-          <meta name="msapplication-TileColor" content="#da532c"></meta>
-          <meta name="theme-color" content="#ffffff"></meta>
-        </div>
-      </NextHead>
       <NotificationContext.Provider value={notificationState}>
         <div className="w-screen h-screen absolute overflow-y-hidden">
           {/* <div className="absolute -right-96 -bottom-96">
