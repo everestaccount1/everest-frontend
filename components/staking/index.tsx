@@ -1,7 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import Deposit from './Deposit';
 import Withdraw from './Withdrawl';
-import Claim from './Claim';
 import Image, { StaticImageData } from 'next/image';
 import { Contract, Button } from '../../types';
 import Link from 'next/link';
