@@ -190,9 +190,7 @@ const Staking: FC<StakingProps> = ({
         <Withdraw stakedBalance={stakedBalance} chain={chain} callback={refetchBalances} poolImg={poolImg}
           address={pool[chain?.id]?.address} abi={pool?.abi} hasUnlockTime={hasUnlockTime}
          />
-        <Claim chain={chain} callback={refetchBalances} 
-          address={pool[chain?.id]?.address} abi={pool?.abi} showClaimBtn={showClaimBtn} pendingRewardsFunction={pendingRewardsFunction}
-        />
+        
       </div>
     </div>
   )
