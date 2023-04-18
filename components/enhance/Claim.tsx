@@ -3,9 +3,9 @@ import { usePrepareContractWrite, useContractWrite, useContractRead, useAccount,
 import formatError from '../../helpers/formatError';
 import NotificationContext from '../../context/NotificationContext';
 import { ExternalLink } from 'react-feather';
-import { BigNumberish, ethers } from 'ethers';
+import { BigNumber, BigNumberish, ethers } from 'ethers';
 
-const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn }) => {
+const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pRewards }) => {
   const { address } = useAccount();
   const { popNotification } = useContext(NotificationContext);
   const [inProgress, setInProgress] = useState(false);
@@ -17,17 +17,6 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn }) 
       <ExternalLink className="ml-1 h-5 w-5" />
     </div>
   );
-
-  useContractRead({
-    address: stakingAddress,
-    abi: abi,
-    functionName: 'pendingRewards',
-    args: [address],
-    watch: true,
-    onSuccess (data: BigNumberish) {
-      setRewards(ethers.utils.formatEther(data));
-    }
-  });
 
   const { config } = usePrepareContractWrite({
     address: stakingAddress,
@@ -71,7 +60,8 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn }) 
         <div className="flex items-center">
         <span>Pending Rewards:</span> 
         <span className="mx-2 text-3xl text-accent">
-          {parseFloat(rewards?.toString()).toLocaleString([],{})}
+          {/* {parseFloat(rewards?.toString()).toLocaleString([],{})} */}
+          {parseFloat(pRewards?.toString() || '0').toFixed(2)}
         </span>
         <span>USDC</span>
         </div>

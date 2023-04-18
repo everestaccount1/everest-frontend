@@ -26,7 +26,7 @@ export const Home: NextPage = () => {
           <div className="text-center">Stake $AVI to receive weekly USDC trading profit payouts</div>
         </div>
         <div className="max-w-xl mx-auto flex flex-col gap-4">
-          <div className="btn-group mx-auto flex flex-nowrap overflow-x-auto">
+          {/* <div className="btn-group mx-auto flex flex-nowrap overflow-x-auto">
             {STAKINGLIST.map((item: StakingListItem, index: number) => (
               <button 
                 key={index}
@@ -37,7 +37,7 @@ export const Home: NextPage = () => {
                 <span className="sm:hidden flex">{item.shortName}</span>
               </button>
             ))}
-          </div>
+          </div> */}
           <Enhance 
             stakingListItem={STAKINGLIST[activePoolIndex ]}
             activePoolIndex={activePoolIndex}

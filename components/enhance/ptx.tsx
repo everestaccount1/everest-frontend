@@ -26,6 +26,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
   const [totalStaked, setTotalStaked] = useState('0');
   const [userRewards, setUserRewards] = useState('0');
   const [leaveEarlyFee, setLeaveEarlyFee] = useState('0');
+  const [rewards, setRewards] = useState('0');
 
   useEffect(() => {
     if (isConnected && connectedChain) {
@@ -52,7 +53,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
   const { refetch: refetchTotalRewards } = useContractRead({
     address: stakingListItem.pool[chain?.id]?.address,
     abi: stakingListItem.pool.abi,
-    functionName: 'totalRewards', //stakingListItem.pendingRewardsFunction,
+    functionName: 'totalRewards',
     args: [address],
     onSuccess (data: BigNumberish) {
       console.log('total rewards for ' + stakingListItem[chain?.id]?.address + ' ' + data.toString())
@@ -76,6 +77,22 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
     onError (e) {
       if (e) {
         setTokenBalance('0');
+      }
+    }
+  });
+
+  useContractRead({
+    address: stakingListItem.pool[chain?.id]?.address,
+    abi: stakingListItem.pool.abi,
+    functionName: 'pendingRewards',
+    args: [address],
+    enabled: true,
+    onSettled: (data, error) => {
+      if (error) {
+        console.log('Rewards Error');
+      } else if (data) {
+        console.log('Rewards: ', ethers.utils.formatEther(data as BigNumber));
+        setRewards(ethers.utils.formatEther(data as BigNumber));
       }
     }
   });
@@ -177,6 +194,7 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
         address={stakingListItem.pool[chain?.id]?.address}
         abi={stakingListItem.pool[chain?.id]?.abi}
         showClaimBtn={true}
+        pRewards={rewards}
         />
       </div>
     </div>
