@@ -70,7 +70,7 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pR
         <button 
           className={`btn btn-block btn-primary ${isLoading || inProgress ? 'loading' : ''}`}
           onClick={() => write?.()}
-          disabled={!write}
+          disabled={parseFloat(pRewards) <= 0}
         >
           Claim
         </button>
