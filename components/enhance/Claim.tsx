@@ -4,12 +4,11 @@ import formatError from '../../helpers/formatError';
 import NotificationContext from '../../context/NotificationContext';
 import { ExternalLink } from 'react-feather';
 import { BigNumber, BigNumberish, ethers } from 'ethers';
+import stakingJson from '../../constants/abis/Staking.json';
 
-const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pRewards }) => {
-  const { address } = useAccount();
+const Claim = ({ chain, callback, address: stakingAddress, showClaimBtn, pRewards }) => {
   const { popNotification } = useContext(NotificationContext);
   const [inProgress, setInProgress] = useState(false);
-  const [rewards, setRewards] = useState('0');
   
   const SuccessNotification = () => (
     <div className="flex items-center">
@@ -18,13 +17,15 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pR
     </div>
   );
 
+
   const { config } = usePrepareContractWrite({
     address: stakingAddress,
-    abi: abi,
+    abi: stakingJson,
     functionName: 'claimRewards',
+    chainId: 56
   });
 
-  const { write, isLoading } = useContractWrite({
+  const { write: claimRewards, isLoading } = useContractWrite({
     ...config,
     async onSuccess (data) {
       setInProgress(true);
@@ -48,11 +49,19 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pR
       console.log(e);
       popNotification({
         type: 'error',
-        title: 'Withdrawl Error',
+        title: 'Claim Error',
         description: formatError(e.message),
       });
     }
   });
+
+  const claim = () => {
+    if (claimRewards) {
+      claimRewards();
+    } else {
+      console.log('Cannot Claim For Some Reason')
+    }
+  }
 
   return (
     <div className="grid grid-row-2 gap-10">
@@ -69,7 +78,7 @@ const Claim = ({ chain, callback, address: stakingAddress, abi, showClaimBtn, pR
       {showClaimBtn && (
         <button 
           className={`btn btn-block btn-primary ${isLoading || inProgress ? 'loading' : ''}`}
-          onClick={() => write?.()}
+          onClick={() => claim()}
           disabled={parseFloat(pRewards) <= 0}
         >
           Claim

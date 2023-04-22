@@ -192,7 +192,6 @@ export const Enhance: FC<EnhanceProps> = ({ stakingListItem, activePoolIndex }) 
         chain={chain}
         callback={refetchBalances}
         address={stakingListItem.pool[chain?.id]?.address}
-        abi={stakingListItem.pool[chain?.id]?.abi}
         showClaimBtn={true}
         pRewards={rewards}
         />
